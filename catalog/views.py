@@ -14,4 +14,4 @@ def contacts(request):
 
 
         return HttpResponse('Данные успешно отправлены!')
-    return render(request, 'catalog/contacts.htmp')
+    return render(request, 'catalog/contacts.html')
