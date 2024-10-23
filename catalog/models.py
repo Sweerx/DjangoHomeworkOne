@@ -7,10 +7,10 @@ class Product(models.Model):
     images = models.ImageField(upload_to='catalog/photo', verbose_name='Фото', blank=True, null=True,
                                help_text='Загрузите фото')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, max_length=100, verbose_name='Категория',
-                                 help_text='Введите категорию')
-    purchase_price = models.IntegerField(verbose_name='Цена покупки', help_text='Введите цену покупки')
-    created_at = models.DateField(verbose_name='Дата создания', help_text='Введите дату создания')
-    updated_at = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
+                                 help_text='Выберите категорию')
+    purchase_price = models.IntegerField(verbose_name='Цена', help_text='Введите цену')
+    created_at = models.DateField(verbose_name='Дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Дата последнего изменения', auto_now=True)
 
     class Meta:
         verbose_name = 'Продукт'
@@ -18,7 +18,7 @@ class Product(models.Model):
         ordering = ['name', 'category', 'created_at']
 
     def __str__(self):
-        return self.name, self.description
+        return self.name
 
 
 class Category(models.Model):
