@@ -32,3 +32,18 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ContactInfo(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя', help_text='Введите имя')
+    phone = models.CharField(max_length=20, verbose_name='Номер телефона', help_text='Введите номер телефона')
+    email = models.EmailField(verbose_name='Email', help_text='Введите Email')
+    address = models.TextField(verbose_name='Адресс', help_text='Введите адресс')
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
