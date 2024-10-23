@@ -1,10 +1,13 @@
 from django.db import models
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование', help_text='Введите наименование')
-    description = models.TextField(verbose_name='Описание', blank=True, null=True, hrlp_text='Введите описание')
-    images = models.ImageField(upload_to='catalog/photo',verbose_name='Фото', blank=True, null=True, help_text='Загрузите фото')
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, max_length=100, verbose_name='Категория', help_text='Введите категорию')
+    description = models.TextField(verbose_name='Описание', blank=True, null=True, help_text='Введите описание')
+    images = models.ImageField(upload_to='catalog/photo', verbose_name='Фото', blank=True, null=True,
+                               help_text='Загрузите фото')
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, max_length=100, verbose_name='Категория',
+                                 help_text='Введите категорию')
     purchase_price = models.IntegerField(verbose_name='Цена покупки', help_text='Введите цену покупки')
     created_at = models.DateField(verbose_name='Дата создания', help_text='Введите дату создания')
     updated_at = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
